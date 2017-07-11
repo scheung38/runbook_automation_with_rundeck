@@ -12,60 +12,61 @@ Example of runbook automation.
 ## Installation
 
 First let's try:
-$ docker pull jordan/rundeck:latest
-latest: Pulling from jordan/rundeck
-> Digest: sha256:84fd657b265a06f53e5716f5e5cdf58b80bda9692b9fafd68b74426099793716
 
-$ docker run -p 4440:4440 -e SERVER_URL=http://localhost:4440 —name rundeck -t jordan/rundeck:latest
+    $ docker pull jordan/rundeck:latest
+    latest: Pulling from jordan/rundeck
+    > Digest: sha256:84fd657b265a06f53e5716f5e5cdf58b80bda9692b9fafd68b74426099793716
 
-$ docker ps -a
+    $ docker run -p 4440:4440 -e SERVER_URL=http://localhost:4440 —name rundeck -t jordan/rundeck:latest
 
-$ docker stop rundeck
-
-$ docker rm rundeck
+    $ docker ps -a
+    
+    $ docker stop rundeck
+    
+    $ docker rm rundeck
 
 
 But prefer to build our own
+    
+    $ docker build -t sebc-rundeck .
 
-$ docker build -t sebc-rundeck .
-
-Sending build context to Docker daemon  5.497MB
-Step 1/8 : FROM jordan/rundeck:latest
- ---> a553fef39ef7
-Step 2/8 : MAINTAINER Sebastian Cheung <sebastian_cheung@live.com>
- ---> Running in 3949bf4899f8
- ---> e7710668817f
-Removing intermediate container 3949bf4899f8
-Step 3/8 : COPY rundeck-ec2-nodes-plugin-1.5.3.jar /var/lib/rundeck/libext/rundeck-ec2-nodes-plugin-1.5.3.jar
- ---> 2741d9856b47
-Removing intermediate container 6390f25c6624
-Step 4/8 : COPY infra-auto.pem /var/lib/rundeck/.ssh/id_rsa
- ---> 3c60fa50ae0d
-Removing intermediate container 180ad80474e6
-Step 5/8 : COPY infra-auto.pub /var/lib/rundeck/.ssh/id_rsa.pub
- ---> 2c4f4d3cc3ab
-Removing intermediate container a4eb47695979
-Step 6/8 : RUN chown rundeck:rundeck /var/lib/rundeck/.ssh/*
- ---> Running in 4d3cab101238
- ---> 8741cca0f96a
-Removing intermediate container 4d3cab101238
-Step 7/8 : ENV SERVER_URL http://localhost:4440
- ---> Running in 444ce6e54f7f
- ---> 15b05dad540b
-Removing intermediate container 444ce6e54f7f
-Step 8/8 : EXPOSE 4440
- ---> Running in 5e41aa81e654
- ---> d7b61f4cf5a9
-Removing intermediate container 5e41aa81e654
-Successfully built d7b61f4cf5a9
-Successfully tagged sebc-rundeck:latest
+    Sending build context to Docker daemon  5.497MB
+    Step 1/8 : FROM jordan/rundeck:latest
+     ---> a553fef39ef7
+    Step 2/8 : MAINTAINER Sebastian Cheung <sebastian_cheung@live.com>
+    ---> Running in 3949bf4899f8
+    ---> e7710668817f
+    Removing intermediate container 3949bf4899f8
+    Step 3/8 : COPY rundeck-ec2-nodes-plugin-1.5.3.jar /var/lib/rundeck/libext/rundeck-ec2-nodes-plugin-1.5.3.jar
+     ---> 2741d9856b47
+    Removing intermediate container 6390f25c6624
+    Step 4/8 : COPY infra-auto.pem /var/lib/rundeck/.ssh/id_rsa
+     ---> 3c60fa50ae0d
+    Removing intermediate container 180ad80474e6
+    Step 5/8 : COPY infra-auto.pub /var/lib/rundeck/.ssh/id_rsa.pub
+     ---> 2c4f4d3cc3ab
+    Removing intermediate container a4eb47695979
+    Step 6/8 : RUN chown rundeck:rundeck /var/lib/rundeck/.ssh/*
+     ---> Running in 4d3cab101238
+     ---> 8741cca0f96a
+    Removing intermediate container 4d3cab101238
+    Step 7/8 : ENV SERVER_URL http://localhost:4440
+     ---> Running in 444ce6e54f7f
+     ---> 15b05dad540b
+    Removing intermediate container 444ce6e54f7f
+    Step 8/8 : EXPOSE 4440
+     ---> Running in 5e41aa81e654
+     ---> d7b61f4cf5a9
+    Removing intermediate container 5e41aa81e654
+    Successfully built d7b61f4cf5a9
+    Successfully tagged sebc-rundeck:latest
 
 
 
 Then 
 
-$ docker run -dp 4440:4440  --name rundeck -t sebc-rundeck
->73a9d839266f526b917e78f7d309a411df6464f240ff69506622864dfde01632
+    $ docker run -dp 4440:4440  --name rundeck -t sebc-rundeck
+    >73a9d839266f526b917e78f7d309a411df6464f240ff69506622864dfde01632
 
 In browser localhost:4440
 
