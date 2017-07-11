@@ -64,7 +64,7 @@ Successfully tagged sebc-rundeck:latest
 
 Then 
 
-$ docker run -dp 4440:4440  - - name rundeck -t sebc-rundeck
+$ docker run -dp 4440:4440  --name rundeck -t sebc-rundeck
 >73a9d839266f526b917e78f7d309a411df6464f240ff69506622864dfde01632
 
 In browser localhost:4440
