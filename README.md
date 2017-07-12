@@ -104,7 +104,7 @@ Click Dispatch to Nodes (provided AWS instances already setup)
 
 Node Filter: .* (for all nodes)
 
-![Alt text](screenshot2.png?raw=true "Past Jobs")
+
 ![Alt text](screenshot3.png?raw=true "Activity Tab")
 Editable filter : YES
 
@@ -127,6 +127,7 @@ Run on 2 Nodes
 On Activity Tab: (this shows audit trail)
 You can see all executions and who ran them
 This reduces the interactive logins people perform and a compliance friendly audit trail. 
+![Alt text](screenshot2.png?raw=true "Past Jobs")
 
 A whole set of runback commands from basic information 
 Gathering ones to support techs to ones that perform system
