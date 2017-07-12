@@ -70,6 +70,8 @@ Then
 
 In browser localhost:4440
 
+![Alt text](screenshot1.png?raw=true "Disk Space")
+
 Login : admin
 Password: admin
 
@@ -102,7 +104,8 @@ Click Dispatch to Nodes (provided AWS instances already setup)
 
 Node Filter: .* (for all nodes)
 
-
+![Alt text](screenshot2.png?raw=true "Past Jobs")
+![Alt text](screenshot3.png?raw=true "Activity Tab")
 Editable filter : YES
 
 Then Create
